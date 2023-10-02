@@ -2,7 +2,7 @@
 
 function connect_to_db()
 {
-  $dbn = 'mysql:dbname=pet_life;charset=utf8mb4;port=3306;host=localhost';
+  $dbn = 'mysql:dbname=pet_life;charset=utf8mb4;port=3306;host=browngoat99@browngoat99.sakura.ne.jp';
   $user = 'root';
   $pwd = '';
 
