@@ -14,7 +14,7 @@
     <div class="card-header">
       <ul class="nav nav-tabs card-header-tabs">
         <li class="nav-item">
-          <a class="nav-link" href="top.php">TOP</a>
+          <a class="nav-link" href="index.php">TOP</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" aria-current="true">Sigh-in</a>

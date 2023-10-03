@@ -57,7 +57,7 @@ foreach ($result as $record) {
           <a class="nav-link" href="todo_input.php">Create</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="top.php">Logout</a>
+          <a class="nav-link" href="index.php">Logout</a>
         </li>
       </ul>
     </div>
