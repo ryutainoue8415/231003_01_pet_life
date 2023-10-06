@@ -20,12 +20,12 @@ try {
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $output = "";
 foreach ($result as $record) {
-  $previewImagePath = "C:/xampp/htdocs/gs/pet_life/img/" . $record["fname"];
+  $previewImagePath = "./img/" . $record["fname"];
   $output .= "
     <tr>
       <td>{$record["deadline"]}</td>
       <td>{$record["todo"]}</td>
-      <td><img src='<?php echo $previewImagePath; ?>' alt='Preview' class='img-thumbnail' style='max-width: 100px;'></td>
+      <td><img src='{$previewImagePath}' alt='Preview' class='img-thumbnail' style='max-width: 100px;'></td>
       <td><a href='like_create.php?user_id={$user_id}&todo_id={$record["id"]}'><i class='fa-solid fa-thumbs-up fa-lg'></i>{$record["like_count"]}</a></td>
       <td><a href='todo_edit.php?id={$record["id"]}'><i class='fa-solid fa-pen-to-square fa-lg'></i></a></td>
       <td><a href='todo_delete.php?id={$record["id"]}'><i class='fa-solid fa-trash fa-lg'></i></a></td>

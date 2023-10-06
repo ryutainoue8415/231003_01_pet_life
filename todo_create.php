@@ -17,7 +17,7 @@ $deadline = $_POST['deadline'];
 $fname = $_FILES['fname']['name'];
 
 // 画像アップロード先のパス
-$upload_dir = "C:/xampp/htdocs/gs/pet_life/img/";
+$upload_dir = "./img/";
 $upload_path = $upload_dir . $fname;
 
 // アップロードした画像を移動

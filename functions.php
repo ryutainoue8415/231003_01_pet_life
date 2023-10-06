@@ -2,16 +2,21 @@
 
 function connect_to_db()
 {
-  $dbn = 'mysql:dbname=mysql57.browngoat99.sakura.ne.jp;charset=utf8mb4;port=3306;host=browngoat99_gs_sotsusei';
-  $user ='browngoat99';
-  $pwd = 'pbnyH+9Higgj';
+  $dbn = 'mysql:dbname=pet_life;charset=utf8mb4;port=3306;host=localhost';
+  $user = 'root';
+  $pwd = '';
+
+ // さくらサーバー用
+ //$dbn = 'mysql:dbname=mysql57.browngoat99.sakura.ne.jp;charset=utf8mb4;port=3306;host=browngoat99_gs_sotsusei';
+ //$user = 'browngoat99';
+ //$pwd = 'pbnyH+9Higgj';
+
 
   // ローカル動作確認用
-  // $hostname='localhost';
-  // $dbname='pet_life';
-  // $user='root'
-  // $pass='';
-
+  //$dbn = 'mysql:dbname=pet_life;charset=utf8mb4;port=3306;host=localhost';
+  //$user = 'root';
+  //$pwd = '';
+  
 
   try {
     return new PDO($dbn, $user, $pwd);
