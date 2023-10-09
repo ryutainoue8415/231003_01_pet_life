@@ -17,27 +17,27 @@
           <a class="nav-link" href="index.php">TOP</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="true">Sigh-in</a>
+          <a class="nav-link active" aria-current="true">Login</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="todo_register.php">Register</a>
         </li>
       </ul>
     </div>
-    <h1 class="fs-3 text-center mt-5">Please sign-in</h1>
+    <h1 class="fs-3 text-center mt-5">Please Login</h1>
     <div class="col-md-6 col-lg-4 mx-auto mt-3" style="background-color: #e0ebeb;">
       <div class="d-grid gap-4 col-8 mx-auto">
         <!-- post -->
         <form action="todo_login_act.php" method="POST">
           <fieldset>
             <div>
-              <input type="text" class="form-control mb-2 mt-5" placeholder="Name" name="username">
+              <input type="text" class="form-control mb-2 mt-5" placeholder="email" name="user_id">
             </div>
             <div>
               <input type="text" class="form-control mb-2 mt-3" placeholder="Password" name="password">
             </div>
             <div>
-              <button class="btn btn-primary mt-3 mb-5" type="submit">Sign in</button>
+              <button class="btn btn-primary mt-3 mb-5" type="submit">Login</button>
             </div>
           </fieldset>
         </form>

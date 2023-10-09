@@ -34,5 +34,5 @@ try {
     exit();
 }
 
-header("Location:todo_read.php");
+header("Location:dashboard_read.php");
 exit();

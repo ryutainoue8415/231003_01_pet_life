@@ -17,7 +17,7 @@
                     <a class="nav-link active" aria-current="true">TOP</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="todo_login.php">Sigh-in</a>
+                    <a class="nav-link" href="todo_login.php">Login</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="todo_register.php">Register</a>

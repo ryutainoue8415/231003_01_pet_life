@@ -2,15 +2,15 @@
 session_start();
 include('functions.php');
 
-$username = $_POST['username'];
+$user_id = $_POST['user_id'];
 $password = $_POST['password'];
 
 $pdo = connect_to_db();
 
-$sql = 'SELECT * FROM user_table WHERE username=:username AND password=:password AND deleted_at IS NULL';
+$sql = 'SELECT * FROM user_table WHERE user_id=:user_id AND password=:password AND deleted_at IS NULL';
 
 $stmt = $pdo->prepare($sql);
-$stmt->bindValue(':username', $username, PDO::PARAM_STR);
+$stmt->bindValue(':user_id', $user_id, PDO::PARAM_STR);
 $stmt->bindValue(':password', $password, PDO::PARAM_STR);
 
 try {
@@ -31,7 +31,7 @@ if (!$user) {
   $_SESSION['user_id'] = $user['id'];
   $_SESSION['session_id'] = session_id();
   $_SESSION['is_admin'] = $user['is_admin'];
-  $_SESSION['username'] = $user['username'];
-  header("Location:todo_read.php");
+  $_SESSION['user_id'] = $user['user_id'];
+  header("Location:dashboard_read.php");
   exit();
 }
