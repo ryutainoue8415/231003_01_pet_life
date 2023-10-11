@@ -12,6 +12,7 @@ if (
     exit('paramError');
 }
 
+$user_id = $_SESSION['user_id'];
 $todo = $_POST['todo'];
 $deadline = $_POST['deadline'];
 $fname = $_FILES['fname']['name'];
@@ -26,8 +27,9 @@ if (move_uploaded_file($_FILES['fname']['tmp_name'], $upload_path)) {
     $pdo = connect_to_db();
 
     // データ登録SQL作成
-    $sql = 'INSERT INTO todo_table(id, todo, deadline, fname, created_at, updated_at) VALUES(NULL, :todo, :deadline, :fname, now(), now())';
+    $sql = 'INSERT INTO todo_table(id, user_id, todo, deadline, fname, created_at, updated_at) VALUES(NULL, :user_id, :todo, :deadline, :fname, now(), now())';
     $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':user_id', $user_id, PDO::PARAM_STR);
     $stmt->bindValue(':todo', $todo, PDO::PARAM_STR);
     $stmt->bindValue(':deadline', $deadline, PDO::PARAM_STR);
     $stmt->bindValue(':fname', $fname, PDO::PARAM_STR);

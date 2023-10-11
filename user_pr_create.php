@@ -17,7 +17,7 @@ if (
 ) {
     exit('paramError');
 }
-
+$user_id = $_SESSION['user_id'];
 $user_name = $_POST['user_name'];
 $address = $_POST['address'];
 $tel = $_POST['tel'];
@@ -38,8 +38,9 @@ if (move_uploaded_file($_FILES['pet1_img_name']['tmp_name'], $upload_path)) {
     $pdo = connect_to_db();
 
     // データ登録SQL作成
-    $sql = 'INSERT INTO user_profile(id, user_name, address, tel, pet1_name, pet1_kind, pet1_img_name, pet1_vaccine, pet1_vac_day, pet1_food, created_at, updated_at) VALUES(NULL, :user_name, :address, :tel,:pet1_name,:pet1_kind,:pet1_img_name,:pet1_vaccine,:pet1_vac_day,:pet1_food, now(), now())';
+    $sql = 'INSERT INTO user_profile(id, user_id, user_name, address, tel, pet1_name, pet1_kind, pet1_img_name, pet1_vaccine, pet1_vac_day, pet1_food, created_at, updated_at) VALUES(NULL, :user_id, :user_name, :address, :tel,:pet1_name,:pet1_kind,:pet1_img_name,:pet1_vaccine,:pet1_vac_day,:pet1_food, now(), now())';
     $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':user_id', $user_id, PDO::PARAM_STR);
     $stmt->bindValue(':user_name', $user_name, PDO::PARAM_STR);
     $stmt->bindValue(':address', $address, PDO::PARAM_STR);
     $stmt->bindValue(':tel', $tel, PDO::PARAM_STR);

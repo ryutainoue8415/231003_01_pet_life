@@ -3,22 +3,40 @@ session_start();
 include("functions.php");
 check_session_id();
 
+// セッションからユーザーIDを取得
 $user_id = $_SESSION['user_id'];
+
+// データベースに接続
 $pdo = connect_to_db();
 
-$sql = 'SELECT * FROM todo_table LEFT OUTER JOIN (SELECT todo_id, COUNT(id) AS like_count FROM like_table GROUP BY todo_id) AS result_table ON todo_table.id = result_table.todo_id';
+// SQLクエリを準備
+$sql =
+'SELECT * FROM todo_table
+LEFT OUTER JOIN (SELECT todo_id, COUNT(id) AS like_count FROM like_table 
+GROUP BY todo_id ) 
+AS result_table ON todo_table.id = result_table.todo_id
+WHERE todo_table.user_id = :user_id';
 
+// SQLクエリを実行するためのステートメントを準備
 $stmt = $pdo->prepare($sql);
 
+// ユーザーIDをバインド
+$stmt ->bindParam(':user_id',$user_id, PDO::PARAM_INT);
+
 try {
+  // SQLクエリを実行
   $status = $stmt->execute();
 } catch (PDOException $e) {
+   // エラーが発生した場合はエラーメッセージをJSON形式で出力して終了
   echo json_encode(["sql error" => "{$e->getMessage()}"]);
   exit();
 }
 
+// SQLクエリの結果を取得
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $output = "";
+
+// 結果をHTMLテーブルの形式に整形
 foreach ($result as $record) {
   $previewImagePath = "./img/" . $record["fname"];
   $output .= "
@@ -31,8 +49,7 @@ foreach ($result as $record) {
       <td><a href='todo_delete.php?id={$record["id"]}'><i class='fa-solid fa-trash fa-lg'></i></a></td>
     </tr>
   ";
-}
-
+  }
 ?>
 
 <!DOCTYPE html>

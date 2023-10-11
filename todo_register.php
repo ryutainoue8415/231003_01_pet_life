@@ -30,10 +30,10 @@
         <form action="todo_register_act.php" method="POST">
           <fieldset>
             <div>
-              <input type="text" class="form-control mb-2 mt-5" placeholder="email" name="user_id">
+              <input type="email" class="form-control mb-2 mt-5" placeholder="email" id="exampleInputEmail1" name="user_id">
             </div>
             <div>
-              <input type="text" class="form-control mb-2 mt-3" placeholder="Password" name="password">
+              <input type="password" class="form-control mb-2 mt-3" placeholder="Password" id="exampleInputPassword1" name="password">
             </div>
             <div>
               <button class="btn btn-primary mt-3 mb-5" type="submit">Register</button>

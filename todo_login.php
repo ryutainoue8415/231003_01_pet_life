@@ -30,11 +30,11 @@
         <!-- post -->
         <form action="todo_login_act.php" method="POST">
           <fieldset>
-            <div>
-              <input type="text" class="form-control mb-2 mt-5" placeholder="email" name="user_id">
+            <div class="mb-3">
+              <input type="email" class="form-control mb-2 mt-5" placeholder="email" id="exampleInputEmail1" aria-describedby="emailHelp" name="user_id">
             </div>
             <div>
-              <input type="text" class="form-control mb-2 mt-3" placeholder="Password" name="password">
+              <input type="password" class="form-control mb-2 mt-3" placeholder="Password" id="exampleInputPassword1" name="password">
             </div>
             <div>
               <button class="btn btn-primary mt-3 mb-5" type="submit">Login</button>

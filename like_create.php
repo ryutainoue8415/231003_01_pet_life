@@ -5,10 +5,12 @@ include('functions.php');
 $user_id = $_GET['user_id'];
 $todo_id = $_GET['todo_id'];
 
+
 $pdo = connect_to_db();
 
 // chat gpt=> いいねの数を取得
 $sql = 'SELECT COUNT(*) AS like_count FROM like_table WHERE user_id=:user_id AND todo_id=:todo_id';
+
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':user_id', $user_id, PDO::PARAM_STR);
 $stmt->bindValue(':todo_id', $todo_id, PDO::PARAM_STR);

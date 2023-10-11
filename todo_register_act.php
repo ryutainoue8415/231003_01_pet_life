@@ -14,6 +14,7 @@
 
 <body>
   <?php
+  
   include('functions.php');
 
   if (
