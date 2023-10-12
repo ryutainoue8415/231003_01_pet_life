@@ -2,6 +2,22 @@
 session_start();
 include("functions.php");
 check_session_id();
+
+// データベースに接続
+$pdo = connect_to_db();
+
+// 'user_table' テーブルから 'user_id' カラムの値を取得
+$sql = 'SELECT user_id FROM user_table';
+
+$stmt = $pdo->query($sql);
+
+// フォームの選択肢として表示するための配列を初期化
+$options = [];
+
+// 取得した値を配列に格納
+while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+  $options[] = $row['user_id'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -26,13 +42,16 @@ check_session_id();
     <div class="card-header">
       <ul class="nav nav-tabs card-header-tabs">
         <li class="nav-item">
-          <a class="nav-link" href="user_dashboard_read.php">Dashboard</a>
+          <a class="nav-link" href="admin_dashboard_read.php">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="user_mypage_read.php">Mypage</a>
+          <a class="nav-link active" aria-current="admin_todo_input.php">Admin_Create</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="todo_input.php">Create</a>
+          <a class="nav-link" href="admin_pr_read.php">User_Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="admin_pr_input.php">Profile_Create</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="index.php">Logout</a>
@@ -43,10 +62,20 @@ check_session_id();
     <div class="col-md-6 col-lg-4 mx-auto mt-3" style="background-color: #e0ebeb;">
       <div class="d-grid gap-4 col-8 mx-auto">
         <!-- post -->
-        <form action="todo_create.php" method="POST" enctype="multipart/form-data">
+        <form action="admin_todo_create.php" method="POST" enctype="multipart/form-data">
           <fieldset>
             <div>
-              <input type="text" class="form-control mb-2 mt-5" placeholder="滞在記録" name="todo">
+              <select class="form-select mb-2 mt-5" aria-label="user_id" name="user_id">
+                <?php
+                // 選択肢を表示
+                foreach ($options as $option) {
+                  echo '<option value="' . $option . '">' . $option . '</option>';
+                }
+                ?>
+              </select>
+            </div>
+            <div>
+              <input type="text" class="form-control mb-2 mt-3" placeholder="滞在記録" name="todo">
             </div>
             <div>
               <input type="date" class="form-control mb-2 mt-3" placeholder="日付" name="deadline">

@@ -29,21 +29,21 @@ if (move_uploaded_file($_FILES['fname']['tmp_name'], $upload_path)) {
   // データベースへの接続
   $pdo = connect_to_db();
 
-$sql = "UPDATE todo_table SET todo=:todo, deadline=:deadline, fname=:fname, updated_at=now() WHERE id=:id";
+  $sql = "UPDATE todo_table SET todo=:todo, deadline=:deadline, fname=:fname, updated_at=now() WHERE id=:id";
 
-$stmt = $pdo->prepare($sql);
-$stmt->bindValue(':todo', $todo, PDO::PARAM_STR);
-$stmt->bindValue(':deadline', $deadline, PDO::PARAM_STR);
+  $stmt = $pdo->prepare($sql);
+  $stmt->bindValue(':todo', $todo, PDO::PARAM_STR);
+  $stmt->bindValue(':deadline', $deadline, PDO::PARAM_STR);
   $stmt->bindValue(':fname', $fname, PDO::PARAM_STR);
-$stmt->bindValue(':id', $id, PDO::PARAM_INT);
+  $stmt->bindValue(':id', $id, PDO::PARAM_INT);
 
-try {
-  $status = $stmt->execute();
-} catch (PDOException $e) {
-  echo json_encode(["sql error" => "{$e->getMessage()}"]);
+  try {
+    $status = $stmt->execute();
+  } catch (PDOException $e) {
+    echo json_encode(["sql error" => "{$e->getMessage()}"]);
+    exit();
+  }
+
+  header("Location:user_dashboard_read.php");
   exit();
-}
-
-header("Location:dashboard_read.php");
-exit();
 }

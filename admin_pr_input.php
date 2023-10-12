@@ -26,13 +26,13 @@ check_session_id();
     <div class="card-header">
       <ul class="nav nav-tabs card-header-tabs">
         <li class="nav-item">
-          <a class="nav-link" href="user_dashboard_read.php">Dashboard</a>
+          <a class="nav-link" href="admin_dashboard_read.php">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="user_mypage_read.php">User_Mypage</a>
+          <a class="nav-link" href="admin_todo_input.php">Admin_Create</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="user_pr_read.php">User_Profile</a>
+          <a class="nav-link" href="admin_pr_read.php">User_Profile</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" aria-current="true">Profile_Create</a>
@@ -46,7 +46,7 @@ check_session_id();
     <div class="col-md-6 col-lg-4 mx-auto mt-3" style="background-color: #e0ebeb;">
       <div class="d-grid gap-4 col-8 mx-auto">
         <!-- post -->
-        <form action="user_pr_create.php" method="POST" enctype="multipart/form-data">
+        <form action="admin_pr_create.php" method="POST" enctype="multipart/form-data">
           <fieldset>
             <div>
               <input type="text" class="form-control mb-2 mt-5" placeholder="氏名" name="user_name">

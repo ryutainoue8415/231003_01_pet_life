@@ -10,13 +10,15 @@ $user_id = $_SESSION['user_id'];
 $pdo = connect_to_db();
 
 // SQLクエリを準備
-$sql = 'SELECT * FROM user_profile WHERE user_profile.user_id = :user_id';
+// $sql = 'SELECT * FROM user_profile WHERE user_profile.user_id = :user_id';
+$sql = 'SELECT * FROM user_profile';
 
 // SQLクエリを実行するためのステートメントを準備
 $stmt = $pdo->prepare($sql);
 
 // ユーザーIDをバインド
-$stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+// $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+$stmt = $pdo->prepare($sql);
 
 try {
   // SQLクエリを実行
@@ -70,16 +72,16 @@ foreach ($result as $record) {
     <div class="card-header">
       <ul class="nav nav-tabs card-header-tabs">
         <li class="nav-item">
-          <a class="nav-link" href="user_dashboard_read.php">Dashboard</a>
+          <a class="nav-link" href="admin_dashboard_read.php">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="user_mypage_read.php">User_Mypage</a>
+          <a class="nav-link" href="admin_todo_input.php">Admin_Create</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" aria-current="true">User_Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="user_pr_input.php">Profile_Create</a>
+          <a class="nav-link" href="admin_pr_input.php">Profile_Create</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="index.php">Logout</a>
@@ -101,6 +103,8 @@ foreach ($result as $record) {
             <th scope="col">フード名</th>
             <th scope="col">登録日</th>
             <th scope="col">更新日</th>
+            <th scope="col">edit</th>
+            <th scope="col">delete</th>
           </tr>
         </thead>
         <tbody>

@@ -12,7 +12,7 @@ if (
   !isset($_FILES['pet1_img_name']['name']) || $_FILES['pet1_img_name']['name'] === '' ||
   !isset($_POST['pet1_vaccine']) || $_POST['pet1_vaccine'] === '' ||
   !isset($_POST['pet1_vac_day']) || $_POST['pet1_vac_day'] === '' ||
-  !isset($_POST['pet1_food']) || $_POST['pet1_food'] === '' 
+  !isset($_POST['pet1_food']) || $_POST['pet1_food'] === ''
 ) {
   exit('paramError');
 }
@@ -36,9 +36,9 @@ if (move_uploaded_file($_FILES['pet1_img_name']['tmp_name'], $upload_path)) {
   // データベースへの接続
   $pdo = connect_to_db();
 
-$sql = "UPDATE user_profile SET user_name=:user_name, address=:address,tel=:tel,pet1_name=:pet1_name,pet1_kind=:pet1_kind,pet1_img_name=:pet1_img_name,pet1_vaccine=:pet1_vaccine,pet1_vac_day=:pet1_vac_day,pet1_food=:pet1_food, updated_at=now() WHERE id=:id";
+  $sql = "UPDATE user_profile SET user_name=:user_name, address=:address,tel=:tel,pet1_name=:pet1_name,pet1_kind=:pet1_kind,pet1_img_name=:pet1_img_name,pet1_vaccine=:pet1_vaccine,pet1_vac_day=:pet1_vac_day,pet1_food=:pet1_food, updated_at=now() WHERE id=:id";
 
-$stmt = $pdo->prepare($sql);
+  $stmt = $pdo->prepare($sql);
   $stmt->bindValue(':user_name', $user_name, PDO::PARAM_STR);
   $stmt->bindValue(':address', $address, PDO::PARAM_STR);
   $stmt->bindValue(':tel', $tel, PDO::PARAM_STR);
@@ -49,13 +49,13 @@ $stmt = $pdo->prepare($sql);
   $stmt->bindValue(':pet1_vac_day', $pet1_vac_day, PDO::PARAM_STR);
   $stmt->bindValue(':pet1_food', $pet1_food, PDO::PARAM_STR);
 
-try {
-  $status = $stmt->execute();
-} catch (PDOException $e) {
-  echo json_encode(["sql error" => "{$e->getMessage()}"]);
-  exit();
-}
+  try {
+    $status = $stmt->execute();
+  } catch (PDOException $e) {
+    echo json_encode(["sql error" => "{$e->getMessage()}"]);
+    exit();
+  }
 
-header("Location:dashboard_read.php");
-exit();
+  header("Location:user_dashboard_read.php");
+  exit();
 }

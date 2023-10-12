@@ -39,7 +39,6 @@
 
   if (!$user) {
   ?>
-
     <div class="container text-center mt-5">
       <div class="alert alert-danger p-3" role="alert">
         <h4 class="mb-4">ログイン情報に誤りがあります</h4>
@@ -50,11 +49,13 @@
     exit();
   } else {
     $_SESSION = array();
-    $_SESSION['user_id'] = $user['id'];
     $_SESSION['session_id'] = session_id();
-    $_SESSION['is_admin'] = $user['is_admin'];
     $_SESSION['user_id'] = $user['user_id'];
-    header("Location:dashboard_read.php");
+    if ($user['is_admin'] == 1) {
+      header("Location:admin_dashboard_read.php");
+    } else {
+      header("Location:user_dashboard_read.php");
+    }
     exit();
   }
   ?>

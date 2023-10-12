@@ -26,6 +26,7 @@ foreach ($result as $record) {
   $output .= "
     <tr>
       <td>{$record["deadline"]}</td>
+      <td>{$record["deadline"]}</td>
       <td>{$record["todo"]}</td>
       <td><img src='{$previewImagePath}' alt='Preview' class='img-thumbnail' style='max-width: 100px;'></td>
       <td><a href='like_create.php?user_id={$user_id}&todo_id={$record["id"]}'><i class='fa-solid fa-thumbs-up fa-lg'></i>{$record["like_count"]}</a></td>
@@ -43,7 +44,7 @@ foreach ($result as $record) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <title>記録一覧画面</title>
+  <title>user一覧画面</title>
 </head>
 <style>
   .custom-container {
@@ -63,10 +64,13 @@ foreach ($result as $record) {
         <a class="nav-link active" aria-current="true">Dashboard</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="mypage_read.php">Mypage</a>
+        <a class="nav-link" href="user_mypage_read.php">User_Mypage</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="todo_input.php">Create</a>
+        <a class="nav-link" href="user_pr_read.php">User_Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="user_pr_input.php">Profile_Create</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="index.php">Logout</a>

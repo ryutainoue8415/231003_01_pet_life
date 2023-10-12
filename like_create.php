@@ -36,5 +36,5 @@ try {
     exit();
 }
 
-header("Location:dashboard_read.php");
+header("Location:user_dashboard_read.php");
 exit();

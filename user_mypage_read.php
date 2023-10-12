@@ -11,7 +11,7 @@ $pdo = connect_to_db();
 
 // SQLクエリを準備
 $sql =
-'SELECT * FROM todo_table
+  'SELECT * FROM todo_table
 LEFT OUTER JOIN (SELECT todo_id, COUNT(id) AS like_count FROM like_table 
 GROUP BY todo_id ) 
 AS result_table ON todo_table.id = result_table.todo_id
@@ -21,13 +21,13 @@ WHERE todo_table.user_id = :user_id';
 $stmt = $pdo->prepare($sql);
 
 // ユーザーIDをバインド
-$stmt ->bindParam(':user_id',$user_id, PDO::PARAM_INT);
+$stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
 
 try {
   // SQLクエリを実行
   $status = $stmt->execute();
 } catch (PDOException $e) {
-   // エラーが発生した場合はエラーメッセージをJSON形式で出力して終了
+  // エラーが発生した場合はエラーメッセージをJSON形式で出力して終了
   echo json_encode(["sql error" => "{$e->getMessage()}"]);
   exit();
 }
@@ -45,18 +45,16 @@ foreach ($result as $record) {
       <td>{$record["todo"]}</td>
       <td><img src='{$previewImagePath}' alt='Preview' class='img-thumbnail' style='max-width: 100px;'></td>
       <td><a href='like_create.php?user_id={$user_id}&todo_id={$record["id"]}'><i class='fa-solid fa-thumbs-up fa-lg'></i>{$record["like_count"]}</a></td>
-      <td><a href='todo_edit.php?id={$record["id"]}'><i class='fa-solid fa-pen-to-square fa-lg'></i></a></td>
-      <td><a href='todo_delete.php?id={$record["id"]}'><i class='fa-solid fa-trash fa-lg'></i></a></td>
     </tr>
   ";
-  }
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="ja">
 
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8">user_dashiboard_read.php
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -68,15 +66,20 @@ foreach ($result as $record) {
     <div class="card-header">
       <ul class="nav nav-tabs card-header-tabs">
         <li class="nav-item">
-          <a class="nav-link" href="dashboard_read.php">Dashboard</a>
+          <a class="nav-link" href="user_dashboard_read.php">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="true">Mypage</a>
+          <a class="nav-link active" aria-current="true">User_Mypage</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="user_pr_read.php">profile</a>
+          <a class="nav-link" href="user_pr_read.php">User_Profile</a>
         </li>
-
+        <li class="nav-item">
+          <a class="nav-link" href="user_pr_input.php">Profile_Create</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.php">Logout</a>
+        </li>
       </ul>
     </div>
     <fieldset>
@@ -87,8 +90,6 @@ foreach ($result as $record) {
             <th scope="col">滞在記録</th>
             <th scope="col">preview</th>
             <th scope="col">like</th>
-            <th scope="col">edit</th>
-            <th scope="col">delete</th>
           </tr>
         </thead>
         <tbody>

@@ -39,10 +39,10 @@ $record = $stmt->fetch(PDO::FETCH_ASSOC);
     <div class="card-header">
       <ul class="nav nav-tabs card-header-tabs">
         <li class="nav-item">
-          <a class="nav-link" href="dashboard_read.php">Dashboard</a>
+          <a class="nav-link" href="user_dashboard_read.php">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="mypage_read.php">Mypage</a>
+          <a class="nav-link" href="user_mypage_read.php">Mypage</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="user_pr_read.php">Profile</a>
