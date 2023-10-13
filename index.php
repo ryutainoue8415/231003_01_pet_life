@@ -26,8 +26,8 @@
         </div>
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Pet Hotel へそてんdiary</h5>
-                <p class="card-text">お泊りの様子をお見せします</p>
+                <h5 class="card-title">Pet&Hotel</h5>
+                <p class="card-text">Diary</p>
                 <img src="pet_life_topimg01.jpg" class="img-fluid" alt="topimg">
             </div>
         </div>
