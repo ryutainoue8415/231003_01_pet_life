@@ -4,19 +4,19 @@ function connect_to_db()
 {
 
  // さくらサーバー用
-$dbn =
-  'mysql:dbname=browngoat99_gs_sotsusei';
-        charset=utf8mb4;
-        port=3306;
-        host=mysql57.browngoat99.sakura.ne.jp;
-$user = 'browngoat99';
-$pwd  = 'pbnyH+9Higgj';
+// $dbn =
+//   'mysql:dbname=browngoat99_gs_sotsusei;
+//         charset=utf8mb4;
+//         port=3306;
+//         host=mysql57.browngoat99.sakura.ne.jp';
+// $user = 'browngoat99';
+// $pwd  = 'nnr34786';
 
 
   // ローカル動作確認用
-  // $dbn = 'mysql:dbname=pet_life;charset=utf8mb4;port=3306;host=localhost';
-  // $user = 'root';
-  // $pwd = '';
+  $dbn = 'mysql:dbname=pet_life;charset=utf8mb4;port=3306;host=localhost';
+  $user = 'root';
+  $pwd = '';
   
 
   try {
