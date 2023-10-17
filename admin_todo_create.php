@@ -5,6 +5,7 @@ check_session_id();
 
 // POSTデータの受信とチェック
 if (
+    !isset($_POST['user_id']) || $_POST['user_id'] === '' ||
     !isset($_POST['todo']) || $_POST['todo'] === '' ||
     !isset($_POST['deadline']) || $_POST['deadline'] === '' ||
     !isset($_FILES['fname']['name']) || $_FILES['fname']['name'] === ''
@@ -12,7 +13,7 @@ if (
     exit('paramError');
 }
 
-$user_id = $_SESSION['user_id'];
+$user_id = $_POST['user_id'];
 $todo = $_POST['todo'];
 $deadline = $_POST['deadline'];
 $fname = $_FILES['fname']['name'];

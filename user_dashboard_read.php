@@ -26,7 +26,6 @@ foreach ($result as $record) {
   $output .= "
     <tr>
       <td>{$record["deadline"]}</td>
-      <td>{$record["deadline"]}</td>
       <td>{$record["todo"]}</td>
       <td><img src='{$previewImagePath}' alt='Preview' class='img-thumbnail' style='max-width: 100px;'></td>
       <td><a href='like_create.php?user_id={$user_id}&todo_id={$record["id"]}'><i class='fa-solid fa-thumbs-up fa-lg'></i>{$record["like_count"]}</a></td>
@@ -57,9 +56,10 @@ foreach ($result as $record) {
 <body>
 
 </body>
+
 <div class="card text-center">
   <div class="card-header">
-    <ul class="nav nav-tabs card-header-tabs">
+    <ul class="nav nav-tabs card-header-tabs d-flex">
       <li class="nav-item">
         <a class="nav-link active" aria-current="true">Dashboard</a>
       </li>
@@ -74,6 +74,9 @@ foreach ($result as $record) {
       </li>
       <li class="nav-item">
         <a class="nav-link" href="index.php">Logout</a>
+      </li>
+      <li class="nav-item ml-auto">
+        <a class="nav-link" href="">Login</a>
       </li>
     </ul>
   </div>
